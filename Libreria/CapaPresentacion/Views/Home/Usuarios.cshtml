@@ -1,0 +1,762 @@
+﻿
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .usuarios-breadcrumb {
+        margin-bottom: 1.5rem;
+    }
+
+    .usuarios-card {
+        border: 1px solid #e1e5ea;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .usuarios-card-header {
+        background: #f8f9fb;
+        border-bottom: 1px solid #e1e5ea;
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+        color: #24324a;
+    }
+
+        .usuarios-card-header i {
+            margin-right: 0.45rem;
+        }
+
+    .btn-crear-usuario {
+        border-radius: 8px;
+        padding: 0.55rem 1rem;
+        font-weight: 600;
+    }
+
+    .modal-usuario .modal-dialog {
+        max-width: 680px;
+    }
+
+    .modal-usuario .modal-content {
+        border: none;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22);
+    }
+
+    .modal-usuario-header {
+        background: linear-gradient(135deg, #24324a, #314562);
+        color: white;
+        padding: 1.15rem 1.35rem;
+    }
+
+        .modal-usuario-header .modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+    .modal-usuario-subtitle {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        margin-top: 0.25rem;
+    }
+
+    .modal-usuario-body {
+        background: #ffffff;
+        padding: 1.5rem;
+    }
+
+    .modal-seccion {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #6c757d;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.85rem;
+    }
+
+    .campo-usuario {
+        margin-bottom: 1rem;
+    }
+
+        .campo-usuario label {
+            font-weight: 600;
+            color: #354052;
+            margin-bottom: 0.35rem;
+        }
+
+        .campo-usuario .form-control,
+        .campo-usuario .form-select {
+            border-radius: 8px;
+            min-height: 42px;
+        }
+
+            .campo-usuario .form-control:focus,
+            .campo-usuario .form-select:focus {
+                border-color: #6c8ab8;
+                box-shadow: 0 0 0 0.18rem rgba(49, 69, 98, 0.12);
+            }
+
+    .modal-usuario-footer {
+        background: #f8f9fb;
+        border-top: 1px solid #e1e5ea;
+        padding: 1rem 1.5rem;
+    }
+
+    .btn-modal-cancelar,
+    .btn-modal-guardar {
+        min-width: 110px;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    .usuario-identificador {
+        display: inline-block;
+        background: #eef2f7;
+        color: #506176;
+        font-size: 0.78rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 999px;
+        margin-top: 0.35rem;
+    }
+</style>
+
+<ol class="breadcrumb usuarios-breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item">
+        <a href="@Url.Action("Index", "Home")">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active">Usuarios</li>
+</ol>
+
+<div class="card usuarios-card">
+
+    <div class="usuarios-card-header">
+        <i class="fas fa-users"></i>
+        Lista de usuarios
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-12">
+                <button type="button"
+                        class="btn btn-success btn-crear-usuario"
+                        onclick="abrirModal(null)">
+                    <i class="fas fa-user-plus me-1"></i>
+                    Crear usuario
+                </button>
+            </div>
+        </div>
+
+        <hr />
+
+        <table id="tabla"
+               class="display cell-border"
+               style="width: 100%">
+
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody></tbody>
+
+        </table>
+
+    </div>
+</div>
+
+
+<!-- Modal de usuario -->
+<div class="modal fade modal-usuario"
+     id="FormModal"
+     tabindex="-1"
+     aria-labelledby="usuarioModalLabel"
+     aria-hidden="true"
+     data-bs-backdrop="static">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header modal-usuario-header">
+
+                <div>
+                    <h5 class="modal-title" id="usuarioModalLabel">
+                        Gestión de usuario
+                    </h5>
+
+                    <div class="modal-usuario-subtitle"
+                         id="usuarioModalSubtitle">
+                        Complete los datos del usuario.
+                    </div>
+
+                    <span class="usuario-identificador"
+                          id="usuarioIdentificador">
+                        Nuevo usuario
+                    </span>
+                </div>
+
+                <button type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+
+            </div>
+
+            <div class="modal-body modal-usuario-body">
+
+                <input id="txtid"
+                       type="hidden"
+                       value="0" />
+
+                <div class="modal-seccion">
+                    <i class="fas fa-id-card me-1"></i>
+                    Datos personales
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 campo-usuario">
+                        <label for="txtdni" class="form-label">
+                            DNI
+                        </label>
+
+                        <input type="number"
+                               class="form-control"
+                               id="txtdni"
+                               min="1"
+                               autocomplete="off"
+                               placeholder="Ingrese el DNI" />
+                    </div>
+
+                    <div class="col-md-6 campo-usuario">
+                        <label for="txtnombres" class="form-label">
+                            Nombre
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               id="txtnombres"
+                               maxlength="30"
+                               autocomplete="off"
+                               placeholder="Ingrese el nombre" />
+                    </div>
+
+                    <div class="col-md-6 campo-usuario">
+                        <label for="txtapellidos" class="form-label">
+                            Apellido
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               id="txtapellidos"
+                               maxlength="30"
+                               autocomplete="off"
+                               placeholder="Ingrese el apellido" />
+                    </div>
+
+                    <div class="col-md-6 campo-usuario">
+                        <label for="txtcorreo" class="form-label">
+                            Correo
+                        </label>
+
+                        <input type="email"
+                               class="form-control"
+                               id="txtcorreo"
+                               maxlength="30"
+                               autocomplete="off"
+                               placeholder="ejemplo@correo.com" />
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <div class="modal-seccion">
+                    <i class="fas fa-user-shield me-1"></i>
+                    Configuración de acceso
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 campo-usuario">
+                        <label for="cborol" class="form-label">
+                            Rol
+                        </label>
+
+                        <select id="cborol"
+                                class="form-select">
+
+                            <option value="1">
+                                Cliente
+                            </option>
+
+                            <option value="2">
+                                Administrador
+                            </option>
+
+                            <option value="3">
+                                Webmaster
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 campo-usuario">
+                        <label for="cboactivo" class="form-label">
+                            Estado
+                        </label>
+
+                        <select id="cboactivo"
+                                class="form-select">
+
+                            <option value="1">
+                                Activo
+                            </option>
+
+                            <option value="0">
+                                Inactivo
+                            </option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-12">
+
+                        <div id="mensajeError"
+                             class="alert alert-danger"
+                             role="alert"
+                             style="display:none;">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer modal-usuario-footer">
+
+                <button type="button"
+                        class="btn btn-secondary btn-modal-cancelar"
+                        data-bs-dismiss="modal">
+                    Cancelar
+                </button>
+
+                <button type="button"
+                        class="btn btn-primary btn-modal-guardar"
+                        onclick="Guardar()">
+                    <i class="fas fa-save me-1"></i>
+                    Guardar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script>
+
+        var tabladata;
+        var filaSeleccionada;
+
+
+        // ==========================
+        // CARGAR TABLA
+        // ==========================
+
+        tabladata = $("#tabla").DataTable({
+
+            responsive: true,
+            ordering: false,
+
+            ajax: {
+                url: '@Url.Action("ListarUsuarios", "Home")',
+                type: "GET",
+                dataType: "json"
+            },
+
+            columns: [
+
+                {
+                    data: "NombreUsuario"
+                },
+
+                {
+                    data: "ApellidoUsuario"
+                },
+
+                {
+                    data: "Correo"
+                },
+
+                {
+                    data: "Activo",
+
+                    render: function (valor) {
+
+                        if (valor) {
+
+                            return '<span class="badge bg-success">Sí</span>';
+
+                        } else {
+
+                            return '<span class="badge bg-danger">No</span>';
+
+                        }
+
+                    }
+                },
+
+                {
+
+                    defaultContent:
+                        '<button type="button" ' +
+                        'class="btn btn-primary btn-sm btn-editar">' +
+                        '<i class="fas fa-pen"></i>' +
+                        '</button>' +
+
+                        '<button type="button" ' +
+                        'class="btn btn-danger btn-sm ms-2 btn-eliminar">' +
+                        '<i class="fas fa-trash"></i>' +
+                        '</button>',
+
+                    orderable: false,
+                    searchable: false,
+                    width: "90px"
+                }
+
+            ],
+
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+
+        });
+
+
+        // ==========================
+        // ABRIR MODAL
+        // ==========================
+
+        function abrirModal(json) {
+
+            $("#txtid").val(0);
+            $("#txtdni").val("");
+            $("#txtnombres").val("");
+            $("#txtapellidos").val("");
+            $("#txtcorreo").val("");
+            $("#cborol").val(1);
+            $("#cboactivo").val(1);
+
+            $("#mensajeError").hide().text("");
+
+            $("#usuarioIdentificador")
+                .text("Nuevo usuario");
+
+            $("#usuarioModalLabel")
+                .text("Crear usuario");
+
+            $("#usuarioModalSubtitle")
+                .text(
+                    "Complete los datos para registrar un nuevo usuario."
+                );
+
+            if (json != null) {
+
+                $("#txtid").val(json.IdUsuario);
+                $("#txtdni").val(json.Dni);
+                $("#txtnombres").val(json.NombreUsuario);
+                $("#txtapellidos").val(json.ApellidoUsuario);
+                $("#txtcorreo").val(json.Correo);
+                $("#cborol").val(json.IdRol);
+                $("#cboactivo").val(json.Activo ? 1 : 0);
+
+                $("#usuarioIdentificador")
+                    .text("ID de usuario: " + json.IdUsuario);
+
+                $("#usuarioModalLabel")
+                    .text("Editar usuario");
+
+                $("#usuarioModalSubtitle")
+                    .text(
+                        "Modifique los datos del usuario seleccionado."
+                    );
+            }
+
+            $("#FormModal").modal("show");
+        }
+
+
+        // ==========================
+        // EDITAR
+        // ==========================
+
+        $("#tabla tbody").on(
+            "click",
+            ".btn-editar",
+            function () {
+
+                filaSeleccionada =
+                    $(this).closest("tr");
+
+                var data =
+                    tabladata
+                        .row(filaSeleccionada)
+                        .data();
+
+                abrirModal(data);
+
+            }
+        );
+
+
+        // ==========================
+        // ELIMINAR
+        // ==========================
+
+ $("#tabla tbody").on("click", ".btn-eliminar", function () {
+
+    var usuarioSeleccionado = $(this).closest("tr");
+
+    var data = tabladata
+        .row(usuarioSeleccionado)
+        .data();
+
+    swal({
+        title: "¿Está seguro?",
+        text: "El usuario será desactivado y no podrá iniciar sesión.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-primary",
+        confirmButtonText: "Sí, desactivar",
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: true
+    },
+    function () {
+
+        $.ajax({
+
+            url: '@Url.Action("EliminarUsuario", "Home")',
+
+            type: "POST",
+
+            data: JSON.stringify({
+                id: data.IdUsuario
+            }),
+
+            dataType: "json",
+
+            contentType: "application/json; charset=utf-8",
+
+            success: function (data) {
+
+                if (data.resultado) {
+
+                    var dataUsuario = tabladata
+                        .row(usuarioSeleccionado)
+                        .data();
+
+                    dataUsuario.Activo = false;
+
+                    tabladata
+                        .row(usuarioSeleccionado)
+                        .data(dataUsuario)
+                        .draw(false);
+
+                }
+                else {
+
+                    swal(
+                        "No se pudo desactivar",
+                        data.mensaje,
+                        "error"
+                    );
+                }
+            },
+
+            error: function () {
+
+                swal(
+                    "Error",
+                    "No se pudo completar la operación.",
+                    "error"
+                );
+            }
+        });
+    });
+});
+
+
+        // ==========================
+        // GUARDAR
+        // ==========================
+
+function Guardar() {
+
+    var dni = parseInt($("#txtdni").val());
+    var idRol = parseInt($("#cborol").val());
+    var idUsuario = parseInt($("#txtid").val());
+
+    var nombre = $("#txtnombres").val().trim();
+    var apellido = $("#txtapellidos").val().trim();
+    var correo = $("#txtcorreo").val().trim();
+    var activo = $("#cboactivo").val() == 1;
+
+
+    // ==========================
+    // VALIDACIONES
+    // ==========================
+
+    if (!dni || dni <= 0) {
+        $("#mensajeError")
+            .text("Debe ingresar un DNI válido.")
+            .show();
+        return;
+    }
+
+    if (nombre === "") {
+        $("#mensajeError")
+            .text("Debe completar el nombre.")
+            .show();
+        return;
+    }
+
+    if (apellido === "") {
+        $("#mensajeError")
+            .text("Debe completar el apellido.")
+            .show();
+        return;
+    }
+
+    if (correo === "") {
+        $("#mensajeError")
+            .text("Debe completar el correo.")
+            .show();
+        return;
+    }
+
+    if (!idRol || idRol < 1) {
+        $("#mensajeError")
+            .text("Debe seleccionar un rol.")
+            .show();
+        return;
+    }
+
+
+    var Usuario = {
+        IdUsuario: idUsuario,
+        IdRol: idRol,
+        Dni: dni,
+        NombreUsuario: nombre,
+        ApellidoUsuario: apellido,
+        Correo: correo,
+        Activo: activo
+    };
+
+
+
+    $.ajax({
+
+        url: '@Url.Action("GuardarUsuario", "Home")',
+
+        type: "POST",
+
+        data: JSON.stringify({
+            usu: Usuario
+        }),
+
+        dataType: "json",
+
+        contentType: "application/json; charset=utf-8",
+
+
+        success: function (data) {
+
+            if (Usuario.IdUsuario == 0) {
+
+                if (data.resultado != 0) {
+
+                    Usuario.IdUsuario = data.resultado;
+
+                    tabladata
+                        .row
+                        .add(Usuario)
+                        .draw(false);
+
+                    $("#FormModal").modal("hide");
+
+                }
+                else {
+
+                    $("#mensajeError")
+                        .text(data.mensaje)
+                        .show();
+
+                }
+
+            }
+            else {
+
+                if (data.resultado) {
+
+                    tabladata
+                        .row(filaSeleccionada)
+                        .data(Usuario)
+                        .draw(false);
+
+                    filaSeleccionada = null;
+
+                    $("#FormModal").modal("hide");
+
+                }
+                else {
+
+                    $("#mensajeError")
+                        .text(data.mensaje)
+                        .show();
+
+                }
+            }
+
+        },
+
+        error: function (xhr) {
+
+            $("#mensajeError")
+                .text(
+                    "No se pudo completar la operación."
+                )
+                .show();
+
+        }
+
+    });
+}
+
+    </script>
+}
+
+
+
+
+
+
+
+
+

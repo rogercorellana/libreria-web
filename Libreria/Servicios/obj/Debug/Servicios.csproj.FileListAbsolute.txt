@@ -1,0 +1,17 @@
+C:\Users\excap\source\repos\Libreria\Servicios\bin\Debug\Servicios.dll
+C:\Users\excap\source\repos\Libreria\Servicios\bin\Debug\Servicios.pdb
+C:\Users\excap\source\repos\Libreria\Servicios\obj\Debug\Servicios.csprojAssemblyReference.cache
+C:\Users\excap\source\repos\Libreria\Servicios\obj\Debug\Servicios.csproj.CoreCompileInputs.cache
+C:\Users\excap\source\repos\Libreria\Servicios\obj\Debug\Servicios.dll
+C:\Users\excap\source\repos\Libreria\Servicios\obj\Debug\Servicios.pdb
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\bin\Debug\Servicios.dll
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\bin\Debug\Servicios.pdb
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\obj\Debug\Servicios.csprojAssemblyReference.cache
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\obj\Debug\Servicios.csproj.CoreCompileInputs.cache
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\obj\Debug\Servicios.dll
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\obj\Debug\Servicios.pdb
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\bin\Debug\CapaDatos.dll
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\bin\Debug\CapaEntidad.dll
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\bin\Debug\CapaDatos.pdb
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\bin\Debug\CapaEntidad.pdb
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\Servicios\obj\Debug\Servicios.csproj.CopyComplete

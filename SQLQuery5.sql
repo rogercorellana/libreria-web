@@ -1,0 +1,409 @@
+USE [master]
+GO
+/****** Object:  Database [LIBRERIA]    Script Date: 24/08/2026 10:20:11 ******/
+CREATE DATABASE [LIBRERIA]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'LIBRERIA', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\LIBRERIA.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'LIBRERIA_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\LIBRERIA_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [LIBRERIA] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [LIBRERIA].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [LIBRERIA] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [LIBRERIA] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [LIBRERIA] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [LIBRERIA] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [LIBRERIA] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [LIBRERIA] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [LIBRERIA] SET  MULTI_USER 
+GO
+ALTER DATABASE [LIBRERIA] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [LIBRERIA] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [LIBRERIA] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [LIBRERIA] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [LIBRERIA] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [LIBRERIA] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [LIBRERIA] SET QUERY_STORE = OFF
+GO
+USE [LIBRERIA]
+GO
+/****** Object:  Table [dbo].[Bitacora]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Bitacora](
+	[id_bitacora] [int] IDENTITY(1,1) NOT NULL,
+	[fecha_hora] [datetime] NOT NULL,
+	[id_usuario] [int] NULL,
+	[usuario] [varchar](100) NULL,
+	[id_rol] [int] NULL,
+	[operacion] [varchar](50) NOT NULL,
+	[modulo] [varchar](50) NOT NULL,
+	[resultado] [varchar](20) NOT NULL,
+	[descripcion] [varchar](500) NULL,
+	[tabla_afectada] [varchar](128) NULL,
+	[registro_afectado] [varchar](100) NULL,
+ CONSTRAINT [PK_Bitacora] PRIMARY KEY CLUSTERED 
+(
+	[id_bitacora] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cliente]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cliente](
+	[id_cliente] [int] NOT NULL,
+	[dni_cliente] [int] NOT NULL,
+	[nombre_cliente] [varchar](30) NOT NULL,
+	[apellido_cliente] [varchar](30) NOT NULL,
+	[correo] [varchar](30) NOT NULL,
+	[telefono] [int] NOT NULL,
+ CONSTRAINT [PK_Cliente] PRIMARY KEY CLUSTERED 
+(
+	[id_cliente] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Compra]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Compra](
+	[id_compra] [int] NOT NULL,
+	[id_editorial] [int] NOT NULL,
+	[monto] [decimal](18, 2) NOT NULL,
+	[fecha_registro] [datetime] NOT NULL,
+	[usuario] [varchar](30) NOT NULL,
+ CONSTRAINT [PK_Compra] PRIMARY KEY CLUSTERED 
+(
+	[id_compra] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DetalleCompra]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DetalleCompra](
+	[id_detalle_compra] [int] NOT NULL,
+	[id_compra] [int] NOT NULL,
+	[isbn] [varchar](30) NOT NULL,
+	[precio_compra] [decimal](18, 2) NOT NULL,
+	[cantidad] [int] NOT NULL,
+	[precio_venta] [decimal](18, 2) NOT NULL,
+	[monto_total] [decimal](18, 2) NOT NULL,
+	[fecha_registro] [datetime] NOT NULL,
+ CONSTRAINT [PK_DetalleCompra] PRIMARY KEY CLUSTERED 
+(
+	[id_detalle_compra] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Editorial]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Editorial](
+	[id_editorial] [int] NOT NULL,
+	[razon_social] [varchar](50) NOT NULL,
+	[correo] [varchar](50) NOT NULL,
+	[telefono] [int] NOT NULL,
+ CONSTRAINT [PK_Editorial] PRIMARY KEY CLUSTERED 
+(
+	[id_editorial] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Factura]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Factura](
+	[id_factura] [int] NOT NULL,
+	[id_venta] [int] NOT NULL,
+	[id_cliente] [int] NOT NULL,
+	[isbn] [varchar](30) NOT NULL,
+	[cantidad] [int] NOT NULL,
+	[precio_venta] [decimal](18, 2) NOT NULL,
+	[subtotal] [decimal](18, 2) NOT NULL,
+	[fecha_registro] [datetime] NOT NULL,
+ CONSTRAINT [PK_Factura] PRIMARY KEY CLUSTERED 
+(
+	[id_factura] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[IntegridadHorizontal]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[IntegridadHorizontal](
+	[id_integridad_h] [int] IDENTITY(1,1) NOT NULL,
+	[tabla] [varchar](128) NOT NULL,
+	[registro_clave] [varchar](200) NOT NULL,
+	[dvh] [varchar](64) NOT NULL,
+	[fecha_calculo] [datetime] NOT NULL,
+ CONSTRAINT [PK_IntegridadHorizontal] PRIMARY KEY CLUSTERED 
+(
+	[id_integridad_h] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [UQ_IntegridadHorizontal_TablaRegistro] UNIQUE NONCLUSTERED 
+(
+	[tabla] ASC,
+	[registro_clave] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[IntegridadVertical]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[IntegridadVertical](
+	[id_integridad_v] [int] IDENTITY(1,1) NOT NULL,
+	[tabla] [varchar](128) NOT NULL,
+	[dvv] [varchar](64) NOT NULL,
+	[cantidad_registros] [int] NOT NULL,
+	[fecha_calculo] [datetime] NOT NULL,
+ CONSTRAINT [PK_IntegridadVertical] PRIMARY KEY CLUSTERED 
+(
+	[id_integridad_v] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [UQ_IntegridadVertical_Tabla] UNIQUE NONCLUSTERED 
+(
+	[tabla] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Libro]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Libro](
+	[isbn] [varchar](30) NOT NULL,
+	[codigo] [varchar](30) NULL,
+	[titulo] [varchar](100) NULL,
+	[stock] [int] NULL,
+	[precio_compra] [decimal](18, 2) NULL,
+	[precio_venta] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_Libro] PRIMARY KEY CLUSTERED 
+(
+	[isbn] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Permiso]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Permiso](
+	[id_permiso] [int] NOT NULL,
+	[id_rol] [int] NOT NULL,
+	[menu] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Permiso] PRIMARY KEY CLUSTERED 
+(
+	[id_permiso] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Rol]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Rol](
+	[id_rol] [int] NOT NULL,
+	[descripcion] [varchar](15) NOT NULL,
+ CONSTRAINT [PK_Rol] PRIMARY KEY CLUSTERED 
+(
+	[id_rol] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Usuario]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuario](
+	[id_usuario] [int] NOT NULL,
+	[id_rol] [int] NOT NULL,
+	[dni] [int] NOT NULL,
+	[nombre_usuario] [varchar](30) NOT NULL,
+	[apellido_usuario] [varchar](30) NOT NULL,
+	[correo] [varchar](30) NOT NULL,
+	[contrasena] [varchar](64) NOT NULL,
+	[activo] [bit] NOT NULL,
+	[restablecer] [bit] NOT NULL,
+ CONSTRAINT [PK_Usuario] PRIMARY KEY CLUSTERED 
+(
+	[id_usuario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Venta]    Script Date: 24/08/2026 10:20:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Venta](
+	[id_venta] [int] NOT NULL,
+	[usuario] [varchar](30) NOT NULL,
+	[monto] [decimal](18, 2) NOT NULL,
+	[fecha_registro] [datetime] NOT NULL,
+ CONSTRAINT [PK_Venta] PRIMARY KEY CLUSTERED 
+(
+	[id_venta] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Bitacora_FechaHora]    Script Date: 24/08/2026 10:20:25 ******/
+CREATE NONCLUSTERED INDEX [IX_Bitacora_FechaHora] ON [dbo].[Bitacora]
+(
+	[fecha_hora] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Bitacora_IdUsuario]    Script Date: 24/08/2026 10:20:25 ******/
+CREATE NONCLUSTERED INDEX [IX_Bitacora_IdUsuario] ON [dbo].[Bitacora]
+(
+	[id_usuario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [IX_Bitacora_Modulo]    Script Date: 24/08/2026 10:20:25 ******/
+CREATE NONCLUSTERED INDEX [IX_Bitacora_Modulo] ON [dbo].[Bitacora]
+(
+	[modulo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [IX_Bitacora_Operacion]    Script Date: 24/08/2026 10:20:25 ******/
+CREATE NONCLUSTERED INDEX [IX_Bitacora_Operacion] ON [dbo].[Bitacora]
+(
+	[operacion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [IX_Bitacora_Resultado]    Script Date: 24/08/2026 10:20:25 ******/
+CREATE NONCLUSTERED INDEX [IX_Bitacora_Resultado] ON [dbo].[Bitacora]
+(
+	[resultado] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Bitacora] ADD  CONSTRAINT [DF_Bitacora_FechaHora]  DEFAULT (getdate()) FOR [fecha_hora]
+GO
+ALTER TABLE [dbo].[IntegridadHorizontal] ADD  CONSTRAINT [DF_IntegridadHorizontal_Fecha]  DEFAULT (getdate()) FOR [fecha_calculo]
+GO
+ALTER TABLE [dbo].[IntegridadVertical] ADD  CONSTRAINT [DF_IntegridadVertical_Fecha]  DEFAULT (getdate()) FOR [fecha_calculo]
+GO
+ALTER TABLE [dbo].[Compra]  WITH CHECK ADD  CONSTRAINT [FK_Compra_Editorial] FOREIGN KEY([id_editorial])
+REFERENCES [dbo].[Editorial] ([id_editorial])
+GO
+ALTER TABLE [dbo].[Compra] CHECK CONSTRAINT [FK_Compra_Editorial]
+GO
+ALTER TABLE [dbo].[DetalleCompra]  WITH CHECK ADD  CONSTRAINT [FK_DetalleCompra_Compra] FOREIGN KEY([id_compra])
+REFERENCES [dbo].[Compra] ([id_compra])
+GO
+ALTER TABLE [dbo].[DetalleCompra] CHECK CONSTRAINT [FK_DetalleCompra_Compra]
+GO
+ALTER TABLE [dbo].[DetalleCompra]  WITH CHECK ADD  CONSTRAINT [FK_DetalleCompra_Libro] FOREIGN KEY([isbn])
+REFERENCES [dbo].[Libro] ([isbn])
+GO
+ALTER TABLE [dbo].[DetalleCompra] CHECK CONSTRAINT [FK_DetalleCompra_Libro]
+GO
+ALTER TABLE [dbo].[Factura]  WITH CHECK ADD  CONSTRAINT [FK_Factura_Cliente] FOREIGN KEY([id_cliente])
+REFERENCES [dbo].[Cliente] ([id_cliente])
+GO
+ALTER TABLE [dbo].[Factura] CHECK CONSTRAINT [FK_Factura_Cliente]
+GO
+ALTER TABLE [dbo].[Factura]  WITH CHECK ADD  CONSTRAINT [FK_Factura_Libro] FOREIGN KEY([isbn])
+REFERENCES [dbo].[Libro] ([isbn])
+GO
+ALTER TABLE [dbo].[Factura] CHECK CONSTRAINT [FK_Factura_Libro]
+GO
+ALTER TABLE [dbo].[Factura]  WITH CHECK ADD  CONSTRAINT [FK_Factura_Venta] FOREIGN KEY([id_venta])
+REFERENCES [dbo].[Venta] ([id_venta])
+GO
+ALTER TABLE [dbo].[Factura] CHECK CONSTRAINT [FK_Factura_Venta]
+GO
+ALTER TABLE [dbo].[Permiso]  WITH CHECK ADD  CONSTRAINT [FK_Permiso_Rol] FOREIGN KEY([id_rol])
+REFERENCES [dbo].[Rol] ([id_rol])
+GO
+ALTER TABLE [dbo].[Permiso] CHECK CONSTRAINT [FK_Permiso_Rol]
+GO
+ALTER TABLE [dbo].[Usuario]  WITH CHECK ADD  CONSTRAINT [FK_Usuario_Rol] FOREIGN KEY([id_rol])
+REFERENCES [dbo].[Rol] ([id_rol])
+GO
+ALTER TABLE [dbo].[Usuario] CHECK CONSTRAINT [FK_Usuario_Rol]
+GO
+USE [master]
+GO
+ALTER DATABASE [LIBRERIA] SET  READ_WRITE 
+GO

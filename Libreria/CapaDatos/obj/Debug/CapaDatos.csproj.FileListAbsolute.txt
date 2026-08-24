@@ -1,0 +1,18 @@
+C:\Users\excap\source\repos\Libreria\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\excap\source\repos\Libreria\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\excap\source\repos\Libreria\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\excap\source\repos\Libreria\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\excap\source\repos\Libreria\CapaDatos\obj\Debug\CapaDatos.csprojAssemblyReference.cache
+C:\Users\excap\source\repos\Libreria\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\excap\source\repos\Libreria\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\excap\source\repos\Libreria\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\excap\source\repos\Libreria\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\CapaDatos\obj\Debug\CapaDatos.csprojAssemblyReference.cache
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\excap\OneDrive\Escritorio\36- DESARROLLO Y ARQUITECTURAS WEB\Libreria\CapaDatos\obj\Debug\CapaDatos.pdb

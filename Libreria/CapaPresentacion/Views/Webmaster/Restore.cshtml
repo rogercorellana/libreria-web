@@ -1,0 +1,88 @@
+﻿
+@model List<string>
+
+@{
+                /**/
+
+                ViewBag.Title = "Restore";
+}
+
+<div class="container-fluid">
+
+    <h2>Restaurar base de datos</h2>
+
+    <p>
+        Seleccione un backup disponible para restaurar
+        la base de datos.
+    </p>
+
+    @if (TempData["RestoreExitoso"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["RestoreExitoso"]
+        </div>
+    }
+
+    @if (TempData["RestoreError"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["RestoreError"]
+        </div>
+    }
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Backup disponible</th>
+                    <th style="width:180px;">Acción</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (string backup in Model)
+                {
+                    <tr>
+                        <td>@backup</td>
+
+                        <td>
+                            @using (Html.BeginForm(
+                                "EjecutarRestore",
+                                "Webmaster",
+                                FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <input type="hidden"
+                                       name="nombreArchivo"
+                                       value="@backup" />
+
+                                <button type="submit"
+                                        class="btn btn-warning"
+                                        onclick="return confirm(
+                                            '¿Está seguro de restaurar la base de datos con este backup?');">
+                                    Restaurar
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            No hay backups disponibles.
+        </div>
+    }
+
+</div>
