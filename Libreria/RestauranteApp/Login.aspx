@@ -1,11 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs"
     Inherits="RestauranteApp.Login" %>
+<%@ Import Namespace="RestauranteApp.Idiomas" %>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<%= LanguageManager.ObtenerInstancia().IdiomaActual %>">
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar sesión — GastroControl</title>
+    <title>GastroControl</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <style>
         html, body { height: 100%; margin: 0; }
@@ -63,16 +64,26 @@
         <div class="login-overlay">
             <div style="width:100%; max-width:460px; padding: 0 16px;">
                 <div class="card shadow-lg">
-                    <div class="card-header bg-dark text-white text-center py-3">
+                    <div class="card-header bg-dark text-white text-center py-3 position-relative">
+                        <!-- Selector de idioma -->
+                        <asp:DropDownList ID="ddlIdioma" runat="server"
+                            CssClass="form-select form-select-sm position-absolute top-0 end-0 m-2"
+                            Style="width:auto;"
+                            AutoPostBack="true"
+                            CausesValidation="false"
+                            OnSelectedIndexChanged="ddlIdioma_SelectedIndexChanged">
+                            <asp:ListItem Text="Español" Value="es" />
+                            <asp:ListItem Text="English" Value="en" />
+                        </asp:DropDownList>
                         <h4 class="mb-0">🍽️ GastroControl</h4>
-                        <small>Ingresá tus credenciales</small>
+                        <small><asp:Literal ID="litSubtitulo" runat="server" Text="Ingresá tus credenciales" /></small>
                     </div>
                     <div class="card-body p-4">
                         <asp:Label ID="lblMensaje" runat="server"
                             CssClass="alert alert-danger d-block mb-3"
                             Text="" Visible="false" />
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Usuario</label>
+                            <label class="form-label fw-bold"><asp:Literal ID="litUsuario" runat="server" Text="Usuario" /></label>
                             <asp:TextBox ID="txtUsername" runat="server"
                                 CssClass="form-control"
                                 placeholder="Ingresá tu usuario" />
@@ -83,7 +94,7 @@
                                 Display="Dynamic" />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Contraseña</label>
+                            <label class="form-label fw-bold"><asp:Literal ID="litPassword" runat="server" Text="Contraseña" /></label>
                             <asp:TextBox ID="txtPassword" runat="server"
                                 TextMode="Password"
                                 CssClass="form-control"

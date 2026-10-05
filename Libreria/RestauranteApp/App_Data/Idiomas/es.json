@@ -173,7 +173,19 @@
   "Todas": "Todas",
   "NivelInformativo": "• Nivel 1 - Informativo",
   "NivelAdvertencia": "• Nivel 2 - Advertencia",
-  "NivelCritico": "• Nivel 3 - Crítico"
+  "NivelCritico": "• Nivel 3 - Crítico",
+  "LoginTitulo": "Iniciar sesión",
+  "LoginSubtitulo": "Ingresá tus credenciales",
+  "PlaceholderLoginUsuario": "Ingresá tu usuario",
+  "PlaceholderLoginPassword": "Ingresá tu contraseña",
+  "UsuarioObligatorio": "El usuario es obligatorio.",
+  "PasswordObligatoria": "La contraseña es obligatoria.",
+  "Ingresar": "Ingresar",
+  "LoginUsuarioInexistente": "El usuario no existe en el sistema.",
+  "LoginCuentaBloqueada": "Su cuenta está bloqueada. Contacte al administrador.",
+  "LoginErrorIntegridad": "⚠ Error de integridad en la base de datos. Contacte al Webmaster/Encargado para solucionar el problema antes de continuar.",
+  "LoginBloqueoPorIntentos": "Su cuenta fue bloqueada por exceder el límite de intentos. Contacte al administrador.",
+  "LoginCredencialesIncorrectas": "Usuario o contraseña incorrectos. Intentos restantes: "
 
 }
 

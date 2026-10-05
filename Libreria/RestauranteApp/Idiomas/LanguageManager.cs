@@ -10,6 +10,7 @@ namespace RestauranteApp.Idiomas
     {
         private const string SESSION_IDIOMA = "IdiomaActual";
         private const string ITEM_MANAGER = "LanguageManager";
+        private const string COOKIE_IDIOMA = "Idioma";
 
         private readonly List<ILanguageObserver> observadores;
         private Dictionary<string, string> traducciones;
@@ -19,7 +20,7 @@ namespace RestauranteApp.Idiomas
         private LanguageManager()
         {
             observadores = new List<ILanguageObserver>();
-            IdiomaActual = ObtenerIdiomaDeSesion();
+            IdiomaActual = ObtenerIdiomaGuardado();
             CargarIdioma();
         }
 
@@ -54,7 +55,7 @@ namespace RestauranteApp.Idiomas
             if (string.IsNullOrWhiteSpace(nuevoIdioma))
                 return;
 
-            if (nuevoIdioma != "es" && nuevoIdioma != "en")
+            if (!EsIdiomaValido(nuevoIdioma))
                 return;
 
             if (IdiomaActual == nuevoIdioma)
@@ -66,6 +67,13 @@ namespace RestauranteApp.Idiomas
             {
                 HttpContext.Current.Session[SESSION_IDIOMA] = nuevoIdioma;
             }
+
+            // La cookie sobrevive al cierre de sesión (Session.Abandon),
+            // así el Login se muestra en el último idioma elegido
+            HttpCookie cookie = new HttpCookie(COOKIE_IDIOMA, nuevoIdioma);
+            cookie.Expires = DateTime.Now.AddYears(1);
+            cookie.HttpOnly = true;
+            HttpContext.Current.Response.Cookies.Set(cookie);
 
             CargarIdioma();
             NotificarObservadores();
@@ -82,17 +90,37 @@ namespace RestauranteApp.Idiomas
             return clave;
         }
 
-        private string ObtenerIdiomaDeSesion()
+        private string ObtenerIdiomaGuardado()
         {
+            // 1) Sesión actual
             if (HttpContext.Current.Session != null)
             {
                 object idioma = HttpContext.Current.Session[SESSION_IDIOMA];
 
-                if (idioma != null)
+                if (idioma != null && EsIdiomaValido(idioma.ToString()))
                     return idioma.ToString();
             }
 
+            // 2) Cookie persistente (por ejemplo, después de cerrar sesión)
+            HttpCookie cookie = HttpContext.Current.Request.Cookies[COOKIE_IDIOMA];
+
+            if (cookie != null && EsIdiomaValido(cookie.Value))
+            {
+                if (HttpContext.Current.Session != null)
+                {
+                    HttpContext.Current.Session[SESSION_IDIOMA] = cookie.Value;
+                }
+
+                return cookie.Value;
+            }
+
+            // 3) Idioma por defecto
             return "es";
+        }
+
+        private static bool EsIdiomaValido(string idioma)
+        {
+            return idioma == "es" || idioma == "en";
         }
 
         private void CargarIdioma()

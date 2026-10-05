@@ -173,6 +173,18 @@
   "Todas": "All",
   "NivelInformativo": "• Level 1 - Informational",
   "NivelAdvertencia": "• Level 2 - Warning",
-  "NivelCritico": "• Level 3 - Critical"
+  "NivelCritico": "• Level 3 - Critical",
+  "LoginTitulo": "Sign in",
+  "LoginSubtitulo": "Enter your credentials",
+  "PlaceholderLoginUsuario": "Enter your username",
+  "PlaceholderLoginPassword": "Enter your password",
+  "UsuarioObligatorio": "Username is required.",
+  "PasswordObligatoria": "Password is required.",
+  "Ingresar": "Sign in",
+  "LoginUsuarioInexistente": "The user does not exist in the system.",
+  "LoginCuentaBloqueada": "Your account is locked. Please contact the administrator.",
+  "LoginErrorIntegridad": "⚠ Database integrity error. Please contact the Webmaster/Manager to fix the problem before continuing.",
+  "LoginBloqueoPorIntentos": "Your account was locked for exceeding the attempt limit. Please contact the administrator.",
+  "LoginCredencialesIncorrectas": "Incorrect username or password. Remaining attempts: "
 }
 

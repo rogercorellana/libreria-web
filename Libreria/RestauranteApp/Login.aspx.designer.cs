@@ -30,6 +30,10 @@ namespace RestauranteApp
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlIdioma;
+        protected global::System.Web.UI.WebControls.Literal litSubtitulo;
+        protected global::System.Web.UI.WebControls.Literal litUsuario;
+        protected global::System.Web.UI.WebControls.Literal litPassword;
         protected global::System.Web.UI.WebControls.Label lblMensaje;
 
         /// <summary>
