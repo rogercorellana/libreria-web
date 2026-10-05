@@ -1,0 +1,132 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" 
+    Inherits="RestauranteApp.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GastroControl</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <!-- BARRA DE NAVEGACIÓN -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+
+                <!-- Nombre del sistema -->
+                <span class="navbar-brand">🍽️ GastroControl</span>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto">
+
+                        <!-- Menú Mozo ROL-01 -->
+                        <asp:Panel ID="pnlMenuMozo" runat="server" Visible="false">
+                            <li class="nav-item">
+                                <asp:HyperLink ID="hlMesas" CssClass="nav-link"
+                                    NavigateUrl="~/PaginasMozo/MapaMesas.aspx"
+                                    runat="server">Mesas</asp:HyperLink>
+                            </li>
+                        </asp:Panel>
+
+                        <!-- Menú Webmaster ROL-02 -->
+                        <asp:Panel ID="pnlMenuWebmaster" runat="server" Visible="false">
+                            <li class="nav-item">
+                                <asp:HyperLink ID="hlPlatos" CssClass="nav-link"
+                                    NavigateUrl="~/PaginasWebmaster/ABMPlatos.aspx"
+                                    runat="server">Platos</asp:HyperLink>
+                            </li>
+                            <li class="nav-item">
+                                <asp:HyperLink ID="hlIngredientes" CssClass="nav-link"
+                                    NavigateUrl="~/PaginasWebmaster/ABMIngredientes.aspx"
+                                    runat="server">Ingredientes</asp:HyperLink> 
+                            </li> 
+                            <li class="nav-item">
+                                <asp:HyperLink ID="hlProveedores" CssClass="nav-link"
+                                    NavigateUrl="~/PaginasWebmaster/ABMProveedores.aspx"
+                                    runat="server">Proveedores</asp:HyperLink>
+                            </li>
+                            <li class="nav-item">
+                                <asp:HyperLink ID="hlStock" CssClass="nav-link"
+                                    NavigateUrl="~/PaginasWebmaster/GestionStock.aspx"
+                                    runat="server">Stock</asp:HyperLink>
+                            </li>
+                        </asp:Panel>
+
+                        <!-- Menú Admin ROL-03 -->
+                        <asp:Panel ID="pnlMenuAdmin" runat="server" Visible="false">
+                            <li class="nav-item">
+                                <asp:HyperLink ID="hlUsuarios" CssClass="nav-link"
+                                    NavigateUrl="~/PaginasAdmin/ABMUsuarios.aspx"
+                                    runat="server">Usuarios</asp:HyperLink>
+                            </li>
+                            <li class="nav-item">
+                                <asp:HyperLink ID="hlReportes" CssClass="nav-link"
+                                    NavigateUrl="~/PaginasAdmin/Reportes.aspx"
+                                    runat="server">Reportes</asp:HyperLink>
+                            </li>
+                            <li class="nav-item">
+                                <asp:HyperLink ID="hlBitacora" CssClass="nav-link"
+                                    NavigateUrl="~/PaginasAdmin/Bitacora.aspx"
+                                    runat="server">Bitácora</asp:HyperLink>
+                            </li>
+                        </asp:Panel>
+
+                    </ul> 
+
+                <!-- Usuario logueado y cerrar sesión -->
+                <!-- Selector de idioma -->
+             <asp:DropDownList ID="ddlIdioma" runat="server" CssClass="form-select form-select-sm me-3" AutoPostBack="true" OnSelectedIndexChanged="ddlIdioma_SelectedIndexChanged">
+             <asp:ListItem Text="Español" Value="es" />
+             <asp:ListItem Text="English" Value="en" />
+                    </asp:DropDownList>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <asp:Label ID="lblUsuario" runat="server"
+                                CssClass="nav-link text-white" Text="" />
+                        </li>
+                        <li class="nav-item">
+                            <asp:Label ID="lblRol" runat="server"
+                                CssClass="nav-link text-white" Text="" />
+                        </li>
+                        <li class="nav-item">
+                            <%--<asp:LinkButton ID="btnCerrarSesion" runat="server"
+                                CssClass="nav-link text-warning"
+                                OnClick="btnCerrarSesion_Click"
+                                Text="Cerrar sesión" />--%>
+                            <asp:LinkButton ID="btnCerrarSesion" runat="server"
+                                CssClass="nav-link text-warning"
+                                OnClick="btnCerrarSesion_Click"
+                                CausesValidation="false"
+                                Text="Cerrar sesión" />
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- CONTENIDO DE CADA PÁGINA -->
+        <div class="container mt-4">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <!-- PIE DE PÁGINA -->
+        <footer class="bg-dark text-white text-center py-3 mt-5">
+            <p class="mb-0"> GastroControl © 2026</p>
+        </footer>
+
+    </form>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script>
+    window.addEventListener('pageshow', function (e) {
+        if (e.persisted) {
+            window.location.reload();
+        }
+    });
+    </script>
+</body>
+</html>

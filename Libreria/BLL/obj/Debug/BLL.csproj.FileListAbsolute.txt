@@ -1,0 +1,33 @@
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\bin\Debug\BLL.dll
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\bin\Debug\BLL.pdb
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\bin\Debug\BE.dll
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\bin\Debug\DAL.dll
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\bin\Debug\BE.pdb
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\bin\Debug\DAL.pdb
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\obj\Debug\BLL.dll
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BLL\obj\Debug\BLL.pdb
+E:\tp arquitectura web\RestauranteApp\BLL\bin\Debug\BLL.dll
+E:\tp arquitectura web\RestauranteApp\BLL\bin\Debug\BLL.pdb
+E:\tp arquitectura web\RestauranteApp\BLL\bin\Debug\BE.dll
+E:\tp arquitectura web\RestauranteApp\BLL\bin\Debug\DAL.dll
+E:\tp arquitectura web\RestauranteApp\BLL\bin\Debug\BE.pdb
+E:\tp arquitectura web\RestauranteApp\BLL\bin\Debug\DAL.pdb
+E:\tp arquitectura web\RestauranteApp\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+E:\tp arquitectura web\RestauranteApp\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+E:\tp arquitectura web\RestauranteApp\BLL\obj\Debug\BLL.csproj.Up2Date
+E:\tp arquitectura web\RestauranteApp\BLL\obj\Debug\BLL.dll
+E:\tp arquitectura web\RestauranteApp\BLL\obj\Debug\BLL.pdb
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\bin\Debug\BLL.dll
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\bin\Debug\BLL.pdb
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\bin\Debug\BE.dll
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\bin\Debug\DAL.dll
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\bin\Debug\BE.pdb
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\bin\Debug\DAL.pdb
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\obj\Debug\BLL.csproj.CopyComplete
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\obj\Debug\BLL.dll
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BLL\obj\Debug\BLL.pdb

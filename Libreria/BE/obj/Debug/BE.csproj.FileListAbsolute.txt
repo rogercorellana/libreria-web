@@ -1,0 +1,12 @@
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BE\bin\Debug\BE.dll
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BE\bin\Debug\BE.pdb
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BE\obj\Debug\BE.csproj.AssemblyReference.cache
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BE\obj\Debug\BE.dll
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\BE\obj\Debug\BE.pdb
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BE\bin\Debug\BE.dll
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BE\bin\Debug\BE.pdb
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BE\obj\Debug\BE.csprojAssemblyReference.cache
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BE\obj\Debug\BE.dll
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\BE\obj\Debug\BE.pdb

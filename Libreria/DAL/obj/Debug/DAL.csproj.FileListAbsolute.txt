@@ -1,0 +1,27 @@
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\DAL\bin\Debug\DAL.dll
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\DAL\bin\Debug\DAL.pdb
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\DAL\bin\Debug\BE.dll
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\DAL\bin\Debug\BE.pdb
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\DAL\obj\Debug\DAL.dll
+C:\Users\Brian\source\repos\DAW_TPRestaurante\RestauranteApp\DAL\obj\Debug\DAL.pdb
+E:\tp arquitectura web\RestauranteApp\DAL\bin\Debug\DAL.dll
+E:\tp arquitectura web\RestauranteApp\DAL\bin\Debug\DAL.pdb
+E:\tp arquitectura web\RestauranteApp\DAL\bin\Debug\BE.dll
+E:\tp arquitectura web\RestauranteApp\DAL\bin\Debug\BE.pdb
+E:\tp arquitectura web\RestauranteApp\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\tp arquitectura web\RestauranteApp\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\tp arquitectura web\RestauranteApp\DAL\obj\Debug\DAL.csproj.Up2Date
+E:\tp arquitectura web\RestauranteApp\DAL\obj\Debug\DAL.dll
+E:\tp arquitectura web\RestauranteApp\DAL\obj\Debug\DAL.pdb
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\DAL\bin\Debug\DAL.dll
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\DAL\bin\Debug\DAL.pdb
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\DAL\bin\Debug\BE.dll
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\DAL\bin\Debug\BE.pdb
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\DAL\obj\Debug\DAL.dll
+E:\INGENIERIA EN SISTEMAS\41- METODOLOGIA Y DESARROLLO WEB\TP Grupal\Solucion\DAL\obj\Debug\DAL.pdb
